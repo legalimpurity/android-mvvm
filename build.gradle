@@ -32,4 +32,7 @@ ext {
     minSdkVersion = 15
     targetSdkVersion = 26
     compileSdkVersion = 26
+
+    // App dependencies
+    dagger2Version = '2.11'
 }
