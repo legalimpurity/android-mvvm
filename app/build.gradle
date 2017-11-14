@@ -22,6 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -35,6 +38,10 @@ dependencies {
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // Android Lifecycle
+    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
+    kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

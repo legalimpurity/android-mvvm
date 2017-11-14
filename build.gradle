@@ -35,4 +35,5 @@ ext {
 
     // App dependencies
     dagger2Version = '2.11'
+    lifecycle = '1.0.0-beta2'
 }
