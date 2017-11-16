@@ -38,6 +38,11 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
         AndroidInjection.inject(this)
     }
 
+    fun getViewDataBinding() : T {
+        return mViewDataBinding!!
+    }
+
+
     //Functions to be implemented by Activities
     abstract fun getViewModel(): V
     abstract fun getBindingVariable() : Int
