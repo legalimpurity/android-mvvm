@@ -13,34 +13,30 @@ import dagger.android.AndroidInjection
 
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatActivity() {
 
-    private var mViewDataBinding: T? = null
-    private var mViewModel: V? = null
+    private lateinit var mViewDataBinding: T
+    private lateinit var mViewModel: V
 
     override fun onCreate(savedInstanceState : Bundle?)
     {
         super.onCreate(savedInstanceState)
-        performDataBinding()
         performDependencyInjection()
+        performDataBinding()
     }
 
-    fun performDataBinding()
+    private fun performDataBinding()
     {
         mViewDataBinding = DataBindingUtil.setContentView(this,getLayoutId())
-        if(mViewModel == null) mViewModel = getViewModel()
-        mViewDataBinding?.let{
-            it.setVariable(getBindingVariable(), mViewModel)
-            it.executePendingBindings()
-        }
+        mViewModel = getViewModel()
+        mViewDataBinding.setVariable(getBindingVariable(), mViewModel)
+        mViewDataBinding.executePendingBindings()
     }
 
-    fun performDependencyInjection()
+    private fun performDependencyInjection()
     {
         AndroidInjection.inject(this)
     }
 
-    fun getViewDataBinding() : T {
-        return mViewDataBinding!!
-    }
+    fun getViewDataBinding() : T = mViewDataBinding
 
 
     //Functions to be implemented by Activities

@@ -18,25 +18,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>()
     private var mActivityMainBinding: ActivityMainBinding? = null
 
 
-    @Inject
-    lateinit var mViewModelFactory: ViewModelProvider.Factory
+    @Inject lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityMainBinding = getViewDataBinding()
     }
 
+    //Functions to be implemented by every Activity
     override fun getViewModel(): MainViewModel {
         mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel::class.java)
         return mMainViewModel!!
     }
 
-    override fun getBindingVariable(): Int {
-        return BR.viewModel
-    }
+    override fun getBindingVariable(): Int = BR.viewModel
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_main
-    }
+    override fun getLayoutId(): Int = R.layout.activity_main
 
 }

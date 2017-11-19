@@ -10,6 +10,9 @@ import dagger.Provides
 
 @Module
 class AppModule(val app: MVVMApp) {
+
     @Provides
     fun provideApp(): MVVMApp = app
+
+    
 }
