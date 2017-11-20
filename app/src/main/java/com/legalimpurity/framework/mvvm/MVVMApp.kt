@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import com.legalimpurity.framework.mvvm.di.components.AppComponent
 import com.legalimpurity.framework.mvvm.di.components.DaggerAppComponent
-import com.legalimpurity.framework.mvvm.di.modules.AppModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -23,7 +22,7 @@ class MVVMApp : Application(), HasActivityInjector
     val appComponent: AppComponent by lazy {
         DaggerAppComponent
                 .builder()
-                .appModule(AppModule(this))
+                .application(this)
                 .build()
     }
 
@@ -34,5 +33,5 @@ class MVVMApp : Application(), HasActivityInjector
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
 
-    fun getComponent() : AppComponent = appComponent
+//    fun getComponent() : AppComponent = appComponent
 }
