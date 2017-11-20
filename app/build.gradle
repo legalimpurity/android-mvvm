@@ -47,9 +47,6 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$rootProject.lifecycle"
     kapt "android.arch.lifecycle:compiler:$rootProject.lifecycle"
 
-    //Data Binding
-    kapt "com.android.databinding:compiler:$rootProject.databinding"
-
     // Reactive
     implementation "io.reactivex.rxjava2:rxjava:$project.rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$project.rxAndroidVersion"
