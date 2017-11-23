@@ -23,6 +23,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityMainBinding = getViewDataBinding()
+
+        // Get Sample Data
+        mMainViewModel?.loadSampleData()
     }
 
     //Functions to be implemented by every Activity
@@ -31,8 +34,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>()
         return mMainViewModel!!
     }
 
-    override fun getBindingVariable(): Int = BR.viewModel
+    override fun getBindingVariable() = BR.viewModel
 
-    override fun getLayoutId(): Int = R.layout.activity_main
+    override fun getLayoutId() = R.layout.activity_main
 
 }

@@ -1,7 +1,9 @@
 package com.legalimpurity.framework.mvvm.ui.mainactivity
 
 import android.arch.lifecycle.ViewModelProvider
+import com.legalimpurity.framework.mvvm.data.DataManager
 import com.legalimpurity.framework.mvvm.di.Factory.ViewModelProviderFactory
+import com.legalimpurity.framework.mvvm.util.rx.SchedulerProvider
 import dagger.Module
 import dagger.Provides
 
@@ -12,7 +14,7 @@ import dagger.Provides
 class MainActivityModule
 {
     @Provides
-    fun provideMainViewModel() : MainViewModel =  MainViewModel()
+    fun provideMainViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider) : MainViewModel =  MainViewModel(dataManager,schedulerProvider)
 
 
     @Provides
