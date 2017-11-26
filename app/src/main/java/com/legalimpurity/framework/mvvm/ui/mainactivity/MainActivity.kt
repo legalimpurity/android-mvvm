@@ -1,7 +1,5 @@
 package com.legalimpurity.framework.mvvm.ui.mainactivity
 
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import com.legalimpurity.framework.mvvm.BR
 import com.legalimpurity.framework.mvvm.R
@@ -14,24 +12,20 @@ import javax.inject.Inject
  */
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>()
 {
-    private var mMainViewModel: MainViewModel? = null
+    @Inject lateinit var mMainViewModel: MainViewModel
+
     private var mActivityMainBinding: ActivityMainBinding? = null
-
-
-    @Inject lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivityMainBinding = getViewDataBinding()
 
-        // Get Sample Data
-        mMainViewModel?.loadSampleData()
+        mMainViewModel.loadSampleData()
     }
 
     //Functions to be implemented by every Activity
     override fun getViewModel(): MainViewModel {
-        mMainViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel::class.java)
-        return mMainViewModel!!
+        return mMainViewModel
     }
 
     override fun getBindingVariable() = BR.viewModel
